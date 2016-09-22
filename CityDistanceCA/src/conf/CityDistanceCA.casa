@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLength" xmlns:ns2="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLengthCallback" xmlns:ns3="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance" xmlns:ns4="http://j2ee.netbeans.org/wsdl/CityDistance/src/Geocode" xmlns:ns5="GeodataService" xmlns:ns6="http://enterprise.netbeans.org/bpel/CityDistance/cityDistance" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="AsyncLengthPort" interface-name="ns1:AsyncLengthPortType" name="endpoint1" service-name="ns1:AsyncLengthService"/>
+        <endpoint endpoint-name="AsyncLengthCallbackPort" interface-name="ns2:AsyncLengthCallbackPortType" name="endpoint2" service-name="ns2:AsyncLengthCallbackService"/>
+        <endpoint endpoint-name="CityDistancePort" interface-name="ns3:CityDistancePortType" name="endpoint3" service-name="ns3:CityDistanceService"/>
+        <endpoint endpoint-name="RestOutboundWSDL_OutboundPort" interface-name="ns4:RestOutboundPortType" name="endpoint4" service-name="ns4:RestOutboundService"/>
+        <endpoint endpoint-name="ServiceMasterSoap12" interface-name="ns5:ServiceMasterSoap" name="endpoint5" service-name="ns5:ServiceMaster"/>
+        <endpoint display-name="Consumer" endpoint-name="CityDistancePortTypeRole_myRole" file-path="cityDistance.bpel" interface-name="ns3:CityDistancePortType" name="endpoint6" process-name="cityDistance" service-name="ns6:Consumer"/>
+        <endpoint display-name="LengthUnitCallback" endpoint-name="AsyncLengthCallbackPortTypeRole_myRole" file-path="cityDistance.bpel" interface-name="ns2:AsyncLengthCallbackPortType" name="endpoint7" process-name="cityDistance" service-name="ns6:LengthUnitCallback"/>
+        <endpoint display-name="LengthUnitProxy" endpoint-name="AsyncLengthPortTypeRole_partnerRole" file-path="cityDistance.bpel" interface-name="ns1:AsyncLengthPortType" name="endpoint8" process-name="cityDistance" service-name="ns6:LengthUnitProxy"/>
+        <endpoint display-name="Geocode" endpoint-name="RestOutboundPortTypeRole_partnerRole" file-path="cityDistance.bpel" interface-name="ns4:RestOutboundPortType" name="endpoint9" process-name="cityDistance" service-name="ns6:Geocode"/>
+        <endpoint display-name="Distance" endpoint-name="ServiceMasterSoapRole_partnerRole" file-path="cityDistance.bpel" interface-name="ns5:ServiceMasterSoap" name="endpoint10" process-name="cityDistance" service-name="ns6:Distance"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="CityDistance.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="CityDistanceCA-CityDistance" unit-name="CityDistance" unknown="false" x="143" y="97">
+            <provides endpoint="endpoint6"/>
+            <provides endpoint="endpoint7"/>
+            <consumes endpoint="endpoint8"/>
+            <consumes endpoint="endpoint9"/>
+            <consumes endpoint="endpoint10"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="CityDistanceCA-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port x="67" y="374">
+                    <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLengthCallback.wsdl#xpointer(/definitions/service[@name='AsyncLengthCallbackService']/port[@name='AsyncLengthCallbackPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+                <port x="67" y="294">
+                    <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLength.wsdl#xpointer(/definitions/service[@name='AsyncLengthService']/port[@name='AsyncLengthPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+                <port x="67" y="214">
+                    <link xlink:href="../jbiServiceUnits/CityDistance/CityDistance.wsdl#xpointer(/definitions/service[@name='CityDistanceService']/port[@name='CityDistancePort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint3"/>
+                    <provides endpoint="endpoint3"/>
+                </port>
+                <port bindingType="soap12" x="67" y="37">
+                    <link xlink:href="../jbiServiceUnits/CityDistance/services.deserthail.com/GeodataService/ServiceMaster.asmx.wsdl#xpointer(/definitions/service[@name='ServiceMaster']/port[@name='ServiceMasterSoap12'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint5"/>
+                    <provides endpoint="endpoint5"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-rest-binding.jar" component-name="sun-rest-binding" description="Represents this Service Unit" name="CityDistanceCA-sun-rest-binding" unit-name="sun-rest-binding">
+            <ports>
+                <port x="67" y="137">
+                    <link xlink:href="../jbiServiceUnits/CityDistance/Geocode.wsdl#xpointer(/definitions/service[@name='RestOutboundService']/port[@name='RestOutboundWSDL_OutboundPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint4"/>
+                    <provides endpoint="endpoint4"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint2" provider="endpoint7" state="unchanged"/>
+        <connection consumer="endpoint9" provider="endpoint4" state="unchanged"/>
+        <connection consumer="endpoint3" provider="endpoint6" state="unchanged"/>
+        <connection consumer="endpoint8" provider="endpoint1" state="unchanged"/>
+        <connection consumer="endpoint10" provider="endpoint5" state="new"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLengthCallback.wsdl#xpointer(/definitions/portType[@name='AsyncLengthCallbackPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLength.wsdl#xpointer(/definitions/portType[@name='AsyncLengthPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/Geocode.wsdl#xpointer(/definitions/portType[@name='RestOutboundPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/CityDistance.wsdl#xpointer(/definitions/portType[@name='CityDistancePortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/services.deserthail.com/GeodataService/ServiceMaster.asmx.wsdl#xpointer(/definitions/portType[@name='ServiceMasterSoap'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLengthCallback.wsdl#xpointer(/definitions/binding[@name='AsyncLengthCallbackBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLength.wsdl#xpointer(/definitions/binding[@name='AsyncLengthBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/Geocode.wsdl#xpointer(/definitions/binding[@name='RestOutboundBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/CityDistance.wsdl#xpointer(/definitions/binding[@name='CityDistanceBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/services.deserthail.com/GeodataService/ServiceMaster.asmx.wsdl#xpointer(/definitions/binding[@name='ServiceMasterSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/services.deserthail.com/GeodataService/ServiceMaster.asmx.wsdl#xpointer(/definitions/binding[@name='ServiceMasterSoap12'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLengthCallback.wsdl#xpointer(/definitions/service[@name='AsyncLengthCallbackService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/AsyncLength.wsdl#xpointer(/definitions/service[@name='AsyncLengthService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/Geocode.wsdl#xpointer(/definitions/service[@name='RestOutboundService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/CityDistance.wsdl#xpointer(/definitions/service[@name='CityDistanceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/CityDistance/services.deserthail.com/GeodataService/ServiceMaster.asmx.wsdl#xpointer(/definitions/service[@name='ServiceMaster'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

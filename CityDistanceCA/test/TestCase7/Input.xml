@@ -1,0 +1,11 @@
+<soapenv:Envelope xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cit="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance">
+  <soapenv:Body>
+    <cit:GetCityDistance>
+      <City1>Pisa</City1>
+      <Country1>Italy</Country1>
+      <City2>Rome</City2>
+      <Country2>Italy</Country2>
+      <LengthUnit>Kilometers</LengthUnit>
+    </cit:GetCityDistance>
+  </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="GeodataService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="GeodataService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="GeodataService">
+      <s:element name="GetPointElevation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputLongitude" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLatitude" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPointElevationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPointElevationResult" type="tns:GetPointElevationResponseObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPointElevationResponseObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Elevation" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetElevationGrid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputLongitude" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLatitude" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="GridSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElevationGridResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElevationGridResult" type="tns:GetElevationGridResponseObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetElevationGridResponseObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LongitudePoint" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatitudePoint" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ElevationPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SampleSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ElevationArray" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetElevationLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputLongitude1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLatitude1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLongitude2" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLatitude2" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElevationLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElevationLineResult" type="tns:GetElevationLineResponseObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetElevationLineResponseObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LongitudePoint1" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatitudePoint1" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ElevationPoint1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LongitudePoint2" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatitudePoint2" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ElevationPoint2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SampleSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ElevationLineArray" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLineDistance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputLongitude1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLatitude1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLongitude2" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InputLatitude2" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLineDistanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLineDistanceResult" type="tns:GetLineDistanceResponseObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetLineDistanceResponseObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LineDistance" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPointElevationResponseObject" nillable="true" type="tns:GetPointElevationResponseObject" />
+      <s:element name="GetElevationGridResponseObject" nillable="true" type="tns:GetElevationGridResponseObject" />
+      <s:element name="GetElevationLineResponseObject" nillable="true" type="tns:GetElevationLineResponseObject" />
+      <s:element name="GetLineDistanceResponseObject" nillable="true" type="tns:GetLineDistanceResponseObject" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPointElevationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPointElevation" />
+  </wsdl:message>
+  <wsdl:message name="GetPointElevationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPointElevationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElevationGridSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElevationGrid" />
+  </wsdl:message>
+  <wsdl:message name="GetElevationGridSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElevationGridResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElevationLineSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElevationLine" />
+  </wsdl:message>
+  <wsdl:message name="GetElevationLineSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElevationLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLineDistanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLineDistance" />
+  </wsdl:message>
+  <wsdl:message name="GetLineDistanceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLineDistanceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceMasterSoap">
+    <wsdl:operation name="GetPointElevation">
+      <wsdl:input message="tns:GetPointElevationSoapIn" />
+      <wsdl:output message="tns:GetPointElevationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElevationGrid">
+      <wsdl:input message="tns:GetElevationGridSoapIn" />
+      <wsdl:output message="tns:GetElevationGridSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElevationLine">
+      <wsdl:input message="tns:GetElevationLineSoapIn" />
+      <wsdl:output message="tns:GetElevationLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLineDistance">
+      <wsdl:input message="tns:GetLineDistanceSoapIn" />
+      <wsdl:output message="tns:GetLineDistanceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceMasterSoap" type="tns:ServiceMasterSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPointElevation">
+      <soap:operation soapAction="GeodataService/GetPointElevation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElevationGrid">
+      <soap:operation soapAction="GeodataService/GetElevationGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElevationLine">
+      <soap:operation soapAction="GeodataService/GetElevationLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLineDistance">
+      <soap:operation soapAction="GeodataService/GetLineDistance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceMasterSoap12" type="tns:ServiceMasterSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPointElevation">
+      <soap12:operation soapAction="GeodataService/GetPointElevation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElevationGrid">
+      <soap12:operation soapAction="GeodataService/GetElevationGrid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElevationLine">
+      <soap12:operation soapAction="GeodataService/GetElevationLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLineDistance">
+      <soap12:operation soapAction="GeodataService/GetLineDistance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceMaster">
+    <wsdl:port name="ServiceMasterSoap" binding="tns:ServiceMasterSoap">
+      <soap:address location="http://services.deserthail.com/GeodataService/ServiceMaster.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceMasterSoap12" binding="tns:ServiceMasterSoap12">
+      <soap12:address location="http://services.deserthail.com/GeodataService/ServiceMaster.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

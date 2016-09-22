@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CityDistance" targetNamespace="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types/>
+    <message name="GetCityDistanceRequest">
+        <part name="City1" type="xsd:string"/>
+        <part name="Country1" type="xsd:string"/>
+        <part name="City2" type="xsd:string"/>
+        <part name="Country2" type="xsd:string"/>
+        <part name="LengthUnit" type="xsd:string"/>
+    </message>
+    <message name="GetCityDistanceResponse">
+        <part name="CityInfo1" type="xsd:string"/>
+        <part name="CityInfo2" type="xsd:string"/>
+        <part name="LengthUnitInfo" type="xsd:string"/>
+        <part name="Distance" type="xsd:double"/>
+    </message>
+    <message name="GetCityDistanceFault">
+        <part name="FaultInfo" type="xsd:string"/>
+    </message>
+    <portType name="CityDistancePortType">
+        <operation name="GetCityDistance">
+            <input name="input1" message="tns:GetCityDistanceRequest"/>
+            <output name="output1" message="tns:GetCityDistanceResponse"/>
+            <fault name="to_fault" message="tns:GetCityDistanceFault"/>
+        </operation>
+    </portType>
+    <binding name="CityDistanceBinding" type="tns:CityDistancePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetCityDistance">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance"/>
+            </output>
+            <fault name="to_fault">
+                <soap:fault name="to_fault"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="CityDistanceService">
+        <port name="CityDistancePort" binding="tns:CityDistanceBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/CityDistanceService/CityDistancePort"/>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="CityDistance">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="CityDistancePortTypeRole" portType="tns:CityDistancePortType"/>
+    </plnk:partnerLinkType>
+</definitions>

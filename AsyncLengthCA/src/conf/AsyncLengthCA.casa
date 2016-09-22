@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLengthCallback" xmlns:ns2="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLength" xmlns:ns3="http://www.webserviceX.NET/" xmlns:ns4="http://enterprise.netbeans.org/bpel/AsyncLength/asyncLength" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="AsyncLengthCallbackPort" interface-name="ns1:AsyncLengthCallbackPortType" name="endpoint1" service-name="ns1:AsyncLengthCallbackService"/>
+        <endpoint endpoint-name="AsyncLengthPort" interface-name="ns2:AsyncLengthPortType" name="endpoint2" service-name="ns2:AsyncLengthService"/>
+        <endpoint endpoint-name="lengthUnitSoap12" interface-name="ns3:lengthUnitSoap" name="endpoint3" service-name="ns3:lengthUnit"/>
+        <endpoint display-name="Consumer" endpoint-name="AsyncLengthPortTypeRole_myRole" file-path="asyncLength.bpel" interface-name="ns2:AsyncLengthPortType" name="endpoint4" process-name="asyncLength" service-name="ns4:Consumer"/>
+        <endpoint display-name="LengthUnit" endpoint-name="lengthUnitSoapRole_partnerRole" file-path="asyncLength.bpel" interface-name="ns3:lengthUnitSoap" name="endpoint5" process-name="asyncLength" service-name="ns4:LengthUnit"/>
+        <endpoint display-name="Callback" endpoint-name="AsyncLengthCallbackPortTypeRole_partnerRole" file-path="asyncLength.bpel" interface-name="ns1:AsyncLengthCallbackPortType" name="endpoint6" process-name="asyncLength" service-name="ns4:Callback"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="AsyncLength.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="AsyncLengthCA-AsyncLength" unit-name="AsyncLength" unknown="false" x="128" y="99">
+            <provides endpoint="endpoint4"/>
+            <consumes endpoint="endpoint5"/>
+            <consumes endpoint="endpoint6"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="AsyncLengthCA-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port x="67" y="217">
+                    <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLengthCallback.wsdl#xpointer(/definitions/service[@name='AsyncLengthCallbackService']/port[@name='AsyncLengthCallbackPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+                <port bindingType="soap12" x="67" y="37">
+                    <link xlink:href="../jbiServiceUnits/AsyncLength/www.webservicex.net/length.asmx.wsdl#xpointer(/definitions/service[@name='lengthUnit']/port[@name='lengthUnitSoap12'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint3"/>
+                    <provides endpoint="endpoint3"/>
+                </port>
+                <port x="67" y="137">
+                    <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLength.wsdl#xpointer(/definitions/service[@name='AsyncLengthService']/port[@name='AsyncLengthPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint6" provider="endpoint1" state="unchanged"/>
+        <connection consumer="endpoint2" provider="endpoint4" state="unchanged"/>
+        <connection consumer="endpoint5" provider="endpoint3" state="new"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLengthCallback.wsdl#xpointer(/definitions/portType[@name='AsyncLengthCallbackPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/www.webservicex.net/length.asmx.wsdl#xpointer(/definitions/portType[@name='lengthUnitSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLength.wsdl#xpointer(/definitions/portType[@name='AsyncLengthPortType'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLengthCallback.wsdl#xpointer(/definitions/binding[@name='AsyncLengthCallbackBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/www.webservicex.net/length.asmx.wsdl#xpointer(/definitions/binding[@name='lengthUnitSoap'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/www.webservicex.net/length.asmx.wsdl#xpointer(/definitions/binding[@name='lengthUnitSoap12'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLength.wsdl#xpointer(/definitions/binding[@name='AsyncLengthBinding'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLengthCallback.wsdl#xpointer(/definitions/service[@name='AsyncLengthCallbackService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/www.webservicex.net/length.asmx.wsdl#xpointer(/definitions/service[@name='lengthUnit'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/AsyncLength/AsyncLength.wsdl#xpointer(/definitions/service[@name='AsyncLengthService'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

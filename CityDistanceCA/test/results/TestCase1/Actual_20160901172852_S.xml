@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <m:GetCityDistanceResponse xmlns:m="http://j2ee.netbeans.org/wsdl/CityDistance/src/CityDistance">
+      <CityInfo1>BXL, Bruxelles-Capitale - Brussel-Hoofdstad, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest, België - Belgique - Belgien</CityInfo1>
+      <CityInfo2>Pisa, PI, TOS, Italia</CityInfo2>
+      <LengthUnitInfo>Kilometers</LengthUnitInfo>
+      <Distance>914.1364555237562</Distance>
+    </m:GetCityDistanceResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

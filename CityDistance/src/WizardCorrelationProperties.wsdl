@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WizardCorrelationProperties.wsdl" targetNamespace="http://enterprise.netbeans.org/bpel/WizardCorrelationProperties" xmlns:tns="http://enterprise.netbeans.org/bpel/WizardCorrelationProperties" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:ns="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLength" xmlns:ns1="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLengthCallback">
+    <import namespace="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLength" location="AsyncLength.wsdl"/>
+    <import namespace="http://j2ee.netbeans.org/wsdl/AsyncLength/src/AsyncLengthCallback" location="AsyncLengthCallback.wsdl"/>
+    <vprop:property name="wzrd_prop_string_string" type="xsd:string"/>
+    <vprop:propertyAlias propertyName="tns:wzrd_prop_string_string" messageType="ns:ChangeLengthUnitRequest" part="fromLengthUnit"/>
+    <vprop:propertyAlias propertyName="tns:wzrd_prop_string_string" messageType="ns1:ChangeLengthUnitCallbackRequest" part="fromLengthUnit"/>
+    <vprop:property name="wzrd_prop_double_double" type="xsd:double"/>
+    <vprop:propertyAlias propertyName="tns:wzrd_prop_double_double" messageType="ns:ChangeLengthUnitRequest" part="LengthValue"/>
+    <vprop:propertyAlias propertyName="tns:wzrd_prop_double_double" messageType="ns1:ChangeLengthUnitCallbackRequest" part="LengthValue"/>
+    <vprop:property name="wzrd_prop_string_string2" type="xsd:string"/>
+    <vprop:propertyAlias propertyName="tns:wzrd_prop_string_string2" messageType="ns:ChangeLengthUnitRequest" part="toLengthUnit"/>
+    <vprop:propertyAlias propertyName="tns:wzrd_prop_string_string2" messageType="ns1:ChangeLengthUnitCallbackRequest" part="toLengthUnit"/>
+</definitions>
